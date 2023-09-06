@@ -98,18 +98,16 @@ module.exports = [
                 filename: "[contenthash].css",
             }),
         ],
-        entry: {
-            new_theme: ["./resources/assets/css/root.scss"],
-            ...Object.assign(
-                ...fs
-                    .readdirSync("./resources/assets/css/legacy/themes")
-                    .map((file) => {
-                        return {
-                            [file]: `./resources/assets/css/legacy/themes/${file}`,
-                        };
-                    })
-            ),
-        },
+entry: {
+  new_theme: ["./resources/assets/css/root.scss"],
+  ...fs.readdirSync("./resources/assets/css/legacy/themes").reduce((entries, file) => {
+    if (fs.statSync(`./resources/assets/css/legacy/themes/${file}`).isDirectory()) {
+      entries[file] = `./resources/assets/css/legacy/themes/${file}/index.scss`;
+    }
+    return entries;
+  }, {}),
+},
+
         optimization: {
             minimizer: [
                 new EsbuildPlugin({
