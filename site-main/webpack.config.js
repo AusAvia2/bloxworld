@@ -11,8 +11,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 require("dotenv").config();
 
-const JS_ASSET_PATH = process.env.JS_ASSET_PATH || "/";
-const CSS_ASSET_PATH = process.env.CSS_ASSET_PATH || "/";
+const JS_ASSET_PATH = "/";
+const CSS_ASSET_PATH ="/";
 
 // https://github.com/fqborges/webpack-fix-style-only-entries/issues/42
 
