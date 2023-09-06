@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => parse_url(env('APP_URL', 'https://www.brick-hill.com'), PHP_URL_HOST),
+    'url' => parse_url(env('APP_URL', 'https://bloxworld-production.up.railway.app'), PHP_URL_HOST),
 
     /*
     |--------------------------------------------------------------------------
