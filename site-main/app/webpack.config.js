@@ -102,7 +102,7 @@ module.exports = [
             new_theme: ["./resources/assets/css/root.scss"],
             ...Object.assign(
                 ...fs
-                    .readdirSync("./resources/assets/css/legacy/themes")
+                    .readdirSync("./resources/assets/css/legacy/themes/")
                     .map((file) => {
                         return {
                             [file]: `./resources/assets/css/legacy/themes/${file}`,
