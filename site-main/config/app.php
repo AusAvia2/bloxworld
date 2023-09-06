@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => parse_url(env('APP_URL', 'https://bloxworld-production.up.railway.app'), PHP_URL_HOST),
+    'url' => parse_url('https://bloxworld-production.up.railway.app', PHP_URL_HOST),
 
     /*
     |--------------------------------------------------------------------------
