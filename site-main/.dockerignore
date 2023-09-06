@@ -1,12 +1,3 @@
-.git
-/ci
-/node_modules
-/public/dist
-/storage
-/.vscode
-/tests
-.phpunit.result.cache
-rr
 
 # all assets here should be compiled and sent to cdn
 
