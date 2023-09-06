@@ -18,7 +18,7 @@ const CSS_ASSET_PATH = process.env.CSS_ASSET_PATH || "/";
 
 let manifestFiles = {};
 
-const BASE_SVG_DIR = "resources/assets/svgs";
+const BASE_SVG_DIR = "./resources/assets/svgs";
 
 const spriterConfig = {
     dest: `public/dist/js/sprites/`,
@@ -99,13 +99,13 @@ module.exports = [
             }),
         ],
         entry: {
-            new_theme: ["resources/assets/css/root.scss"],
+            new_theme: ["./resources/assets/css/root.scss"],
             ...Object.assign(
                 ...fs
-                    .readdirSync("resources/assets/css/legacy/themes")
+                    .readdirSync("./resources/assets/css/legacy/themes/")
                     .map((file) => {
                         return {
-                            [file]: `resources/assets/css/legacy/themes/${file}`,
+                            [file]: `./resources/assets/css/legacy/themes/${file}`,
                         };
                     })
             ),
@@ -119,12 +119,12 @@ module.exports = [
             ],
         },
         output: {
-            path: path.resolve(__dirname, "public/dist/css"),
+            path: path.resolve(__dirname, "public/dist/css/"),
             publicPath: CSS_ASSET_PATH,
         },
         resolve: {
             alias: {
-                "@": path.resolve("resources/assets"),
+                "@": path.resolve("./resources/assets/"),
             },
         },
     },
@@ -322,7 +322,7 @@ module.exports = [
             new CopyPlugin({
                 patterns: [
                     {
-                        from: "resources/assets/images/extract/**",
+                        from: "./resources/assets/images/extract/**",
                         to: "images/extracted/[contenthash][ext]",
                     },
                 ],
@@ -355,24 +355,24 @@ module.exports = [
             }),
         ],
         entry: {
-            register: "resources/assets/js/vue/registerComponents.ts",
+            register: "./resources/assets/js/vue/registerComponents.ts",
             legacy: [
-                "resources/assets/js/clans.js",
-                "resources/assets/js/main.js",
+                "./resources/assets/js/clans.js",
+                "./resources/assets/js/main.js",
             ],
             vue: {
-                import: "resources/assets/js/vue/app.ts",
+                import: "./resources/assets/js/vue/app.ts",
                 dependOn: "register",
             },
             admin: {
-                import: "resources/assets/js/vue/adminApp.ts",
+                import: "./resources/assets/js/vue/adminApp.ts",
                 dependOn: "register",
             },
             superadmin: {
-                import: "resources/assets/js/vue/superAdminApp.ts",
+                import: "./resources/assets/js/vue/superAdminApp.ts",
                 dependOn: "register",
             },
-            vendor: ["resources/assets/js/vue/vendor.js"],
+            vendor: ["./resources/assets/js/vue/vendor.js"],
         },
         output: {
             path: path.resolve(__dirname, "public/dist/js"),
@@ -393,11 +393,11 @@ module.exports = [
             alias: {
                 "vue-i18n": "vue-i18n/dist/vue-i18n.runtime.esm-bundler.js",
                 vue: "vue/dist/vue.esm-bundler.js",
-                "@": path.resolve("resources/assets/js/vue"),
+                "@": path.resolve("./resources/assets/js/vue"),
                 components: path.resolve(
-                    "resources/assets/js/vue/components"
+                    "./resources/assets/js/vue/components"
                 ),
-                media: path.resolve("resources/assets/"),
+                media: path.resolve("./resources/assets/"),
             },
             extensions: [".ts", ".js"],
         },
