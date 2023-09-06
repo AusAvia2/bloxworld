@@ -90,7 +90,7 @@ return [
         ]
     ],
     'main_account_id' => env('MAIN_ACCOUNT_ID', 1003),
-    'url' => env('APP_URL', 'https://www.brick-hill.com'),
+    'url' => 'https://bloxworld-production.up.railway.app',
     'api_url' => env('API_URL'),
     'admin_url' => env('ADMIN_URL'),
 ];
