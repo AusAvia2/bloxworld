@@ -18,7 +18,7 @@ const CSS_ASSET_PATH = process.env.CSS_ASSET_PATH || "/";
 
 let manifestFiles = {};
 
-const BASE_SVG_DIR = "./resources/assets/svgs";
+const BASE_SVG_DIR = "resources/assets/svgs";
 
 const spriterConfig = {
     dest: `public/dist/js/sprites/`,
@@ -101,9 +101,13 @@ module.exports = [
         entry: {
             new_theme: ["./resources/assets/css/root.scss"],
             ...Object.assign(
+                ...fs
+                    .readdirSync("./resources/assets/css/legacy/themes")
+                    .map((file) => {
                         return {
                             [file]: `./resources/assets/css/legacy/themes/${file}`,
                         };
+                    })
             ),
         },
         optimization: {
@@ -115,12 +119,12 @@ module.exports = [
             ],
         },
         output: {
-            path: path.resolve(__dirname, "public/dist/css/"),
+            path: path.resolve(__dirname, "public/dist/css"),
             publicPath: CSS_ASSET_PATH,
         },
         resolve: {
             alias: {
-                "@": path.resolve("./resources/assets/"),
+                "@": path.resolve("./resources/assets"),
             },
         },
     },
